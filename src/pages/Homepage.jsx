@@ -1,10 +1,11 @@
  import { useEffect, useState } from "react";
- import Profilepage from "../components/profilepage";
- import Hoc from "../components/profilepage";
-import UserContext from "../context/createContext"; // import context
- 
+//  import Profilepage from "../components/profilepage";
+//  import Hoc from "../components/profilepage";
+// import UserContext from "../context/createContext"; // import context
+ import UseCallbcl from "../components/useCallback/index"
+ import UseReducer from "../components/useReducer/index"
 export default function Homepage() {
-    const [user, setUser] = useState([])
+    // const [user, setUser] = useState([])
     const api = 'https://api.freeapi.app/api/v1/public/randomusers?page=1&limit=10'
       useEffect(()=>{
         const fetchData =async()=>{
@@ -12,19 +13,21 @@ export default function Homepage() {
             console.log(response);
             const data = await response.json()
             console.log(data);
-            if(data.statusCode ==200){
-                setUser(data.data.data || []); // Ensure it's an array
-            }
+            // if(data.statusCode ==200){
+            //     setUser(data.data.data || []); // Ensure it's an array
+            // }
         }
         fetchData()
       },[])
     
   return (
     <>
-        <UserContext.Provider value={user}>
+    <UseCallbcl/>
+    <UseReducer/>
+        {/* <UserContext.Provider value={user}>
            <Profilepage/>
            <Hoc/>
-        </UserContext.Provider>
+        </UserContext.Provider> */}
     </>
   )
 }

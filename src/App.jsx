@@ -1,7 +1,8 @@
  
 import './App.css'
 import Homepage from './pages/Homepage'
-import Hoc from './components/Hoc'
+import Hoc from './components/Hoc';
+ 
 function App() {
  
   return (

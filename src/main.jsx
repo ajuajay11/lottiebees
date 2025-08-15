@@ -4,7 +4,8 @@ import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import './index.css'
 import App from './App.jsx'
 const Homepage = lazy(() => import('./pages/Homepage.jsx'));
-
+import { store } from './app/store'
+import { Provider } from 'react-redux'
 const router = createBrowserRouter([
   {
     path:"/",
@@ -17,6 +18,8 @@ const router = createBrowserRouter([
 
  createRoot(document.getElementById('root')).render(
   <Suspense fallback={'loader....'}>
-    <RouterProvider router={router} />
+    <Provider store={store}>
+      <RouterProvider router={router} />
+    </Provider>
   </Suspense>,
 )
